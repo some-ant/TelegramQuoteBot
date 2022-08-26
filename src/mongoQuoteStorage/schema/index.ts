@@ -6,3 +6,5 @@ const quoteSchema = new mongoose.Schema({
   tags: [String],
   createdAt: Date,
 });
+
+export default quoteSchema;

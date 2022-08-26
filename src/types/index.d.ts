@@ -1,6 +1,9 @@
 interface QuoteStorage {
   addQuote(quote: Quote): void;
-  findAllQuotes();
+  addQuotes(quotes: Quote[]): void;
+
+  findQuotesByTags(tags: string[]): Quote[];
+  findQuotesByWord(word: string): Quote[];
 }
 
 interface QuoteScrapper {
