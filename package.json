@@ -2,9 +2,9 @@
   "name": "telegram_quote_bot",
   "version": "1.0.0",
   "description": "",
-  "main": "scraper.js",
+  "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx ts-node src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -12,7 +12,8 @@
   "dependencies": {
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.12",
-    "pretty": "^2.0.0"
+    "pretty": "^2.0.0",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "typescript": "^4.8.2"
