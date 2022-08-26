@@ -1,6 +1,10 @@
-const axios = require("axios");
-const cheerio = require("cheerio");
-const pretty = require("pretty");
+// const axios = require("axios");
+// const cheerio = require("cheerio");
+// const pretty = require("pretty");
+
+import axios from "axios";
+import cheerio from "cheerio";
+import pretty from "pretty";
 
 const url = "https://citaty.info/topic/lozh-obman";
 const res = [];
