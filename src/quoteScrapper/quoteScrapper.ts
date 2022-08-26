@@ -1,7 +1,7 @@
 import axios from "axios";
 import cheerio from "cheerio";
 
-import type { Quote, QuoteScrapper } from "./types";
+import type { Quote, QuoteScrapper } from "../types";
 
 class QuoteScrapperImpl implements QuoteScrapper {
   private url: string;
