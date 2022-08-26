@@ -1,3 +1,8 @@
+interface QuoteStorage {
+  addQuote(quote: Quote): void;
+  findAllQuotes();
+}
+
 interface QuoteScrapper {
   scrapeQuotes(): Promise<Quote[]>;
 }
@@ -7,4 +12,4 @@ type Quote = {
   tags: string[];
 };
 
-export { QuoteScrapper, Quote };
+export { QuoteStorage, QuoteScrapper, Quote };
