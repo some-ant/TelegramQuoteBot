@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "start": "npx ts-node src/index.ts"
+    "scrape": "npx ts-node src/scrapeQuotes.ts"
   },
   "keywords": [],
   "author": "",

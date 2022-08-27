@@ -34,7 +34,10 @@ class MongoQuoteStorage implements QuoteStorage {
   }
 
   addQuotes(quotes: Quote[]): void {
-    this.QuoteModel.insertMany(quotes.map((quote) => ({ ...quote, createdAt: Date.now() })))
+    this.QuoteModel.insertMany(
+      quotes.map((quote) => ({ ...quote, createdAt: Date.now() })),
+      { ordered: false }
+    )
       .then(() => {
         console.log(`${quotes.length} Quotes Added`);
       })
