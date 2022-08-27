@@ -33,7 +33,7 @@ class QuoteScrapperImpl implements QuoteScrapper {
       });
       return quotes;
     } catch (errors: any) {
-      throw new Error(errors);
+      throw new Error('Error While Parsing URL');
     }
   }
 }

@@ -3,6 +3,10 @@ import urls from "./urlStorage";
 
 import MongoQuoteStorage from "./mongoQuoteStorage";
 
+/**
+ * Scrapes quotes from provided urls and writes them to 
+ * MongoDB storage
+ */
 (async () => {
   const quoteStorage = new MongoQuoteStorage();
 

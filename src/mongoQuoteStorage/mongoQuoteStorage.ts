@@ -12,7 +12,7 @@ class MongoQuoteStorage implements QuoteStorage {
     dotenv.config();
 
     mongoose.connect(
-      `mongodb+srv://${process.env.TELEGRAM_QUOTE_BOT_APP_USERNAME}:${process.env.TELEGRAM_QUOTE_BOT_APP_PASSWORD}@quotes.tflvplr.mongodb.net/?retryWrites=true&w=majority`
+      `mongodb+srv://${process.env.TELEGRAM_QUOTE_BOT_APP_USERNAME}:${process.env.TELEGRAM_QUOTE_BOT_APP_PASSWORD}@quotes.tflvplr.mongodb.net/${process.env.TELEGRAM_QUOTE_BOT_APP_DB}?retryWrites=true&w=majority`
     );
 
     this.db = mongoose.connection;
