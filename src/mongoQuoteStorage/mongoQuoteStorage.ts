@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
-import type { Quote, QuoteStorage } from "../types";
 import quoteSchema from "./schema";
+
+import type { Quote, QuoteStorage, QuoteEntity } from "../types";
 
 class MongoQuoteStorage implements QuoteStorage {
   private db: mongoose.Connection;
@@ -21,7 +22,7 @@ class MongoQuoteStorage implements QuoteStorage {
       console.log("Connected successfully to MongoDB");
     });
 
-    this.QuoteModel = mongoose.model("Quote", quoteSchema);
+    this.QuoteModel = mongoose.model<QuoteEntity>("Quote", quoteSchema);
   }
 
   addQuote(quote: Quote): void {
@@ -46,12 +47,30 @@ class MongoQuoteStorage implements QuoteStorage {
       });
   }
 
-  findQuotesByTags(tags: string[]): Quote[] {
-    throw new Error("Method not implemented.");
+  async findRandomQuoteByTags(tags: string[]): Promise<Quote | undefined> {
+    const quotes = await this.QuoteModel.aggregate<Quote | undefined>([
+      { $match: { tags: { $in: tags } } },
+      { $sample: { size: 1 } },
+    ]);
+    return quotes[0];
   }
 
-  findQuotesByWord(word: string): Quote[] {
-    throw new Error("Method not implemented.");
+  async findRandomQuoteByWord(word: string): Promise<Quote | undefined> {
+    const quotes = await this.QuoteModel.aggregate<Quote | undefined>([
+      { $match: { quote: { $regex: word } } },
+      { $sample: { size: 1 } },
+    ]);
+    return quotes[0];
+  }
+
+  async findQuotesByTags(tags: string[]): Promise<Quote[]> {
+    const quotes = await this.QuoteModel.find({ tags: { $in: tags } });
+    return quotes;
+  }
+
+  async findQuotesByWord(word: string): Promise<Quote[]> {
+    const quotes = await this.QuoteModel.find({ quote: { $regex: word } });
+    return quotes;
   }
 }
 

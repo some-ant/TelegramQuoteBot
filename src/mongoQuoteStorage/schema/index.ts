@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 
-const quoteSchema = new mongoose.Schema({
-  id: Number,
+import { QuoteEntity } from "../../types";
+
+const quoteSchema = new mongoose.Schema<QuoteEntity>({
   quote: String,
   tags: [String],
   createdAt: Date,

@@ -2,8 +2,11 @@ interface QuoteStorage {
   addQuote(quote: Quote): void;
   addQuotes(quotes: Quote[]): void;
 
-  findQuotesByTags(tags: string[]): Quote[];
-  findQuotesByWord(word: string): Quote[];
+  findRandomQuoteByTags(tags: string[]): Promise<Quote | undefined>;
+  findRandomQuoteByWord(word: string): Promise<Quote | undefined>;
+
+  findQuotesByTags(tags: string[]): Promise<Quote[]>;
+  findQuotesByWord(word: string): Promise<Quote[]>;
 }
 
 interface QuoteScrapper {
@@ -15,4 +18,10 @@ type Quote = {
   tags: string[];
 };
 
-export { QuoteStorage, QuoteScrapper, Quote };
+type QuoteEntity = {
+  quote: string;
+  tags: string[];
+  createdAt: Date;
+};
+
+export { QuoteStorage, QuoteScrapper, Quote, QuoteEntity };
