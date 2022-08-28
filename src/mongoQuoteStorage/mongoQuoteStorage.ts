@@ -48,29 +48,47 @@ class MongoQuoteStorage implements QuoteStorage {
   }
 
   async findRandomQuoteByTags(tags: string[]): Promise<Quote | undefined> {
-    const quotes = await this.QuoteModel.aggregate<Quote | undefined>([
-      { $match: { tags: { $in: tags } } },
-      { $sample: { size: 1 } },
-    ]);
-    return quotes[0];
+    try {
+      const quotes = await this.QuoteModel.aggregate<Quote | undefined>([
+        { $match: { tags: { $in: tags } } },
+        { $sample: { size: 1 } },
+      ]);
+      return quotes[0];
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async findRandomQuoteByWord(word: string): Promise<Quote | undefined> {
-    const quotes = await this.QuoteModel.aggregate<Quote | undefined>([
-      { $match: { quote: { $regex: word } } },
-      { $sample: { size: 1 } },
-    ]);
-    return quotes[0];
+    try {
+      const quotes = await this.QuoteModel.aggregate<Quote | undefined>([
+        { $match: { quote: { $regex: new RegExp(`${word}`), $options: "i" } } },
+        { $sample: { size: 1 } },
+      ]);
+      return quotes[0];
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async findQuotesByTags(tags: string[]): Promise<Quote[]> {
-    const quotes = await this.QuoteModel.find({ tags: { $in: tags } });
-    return quotes;
+    try {
+      const quotes = await this.QuoteModel.find({ tags: { $in: tags } });
+      return quotes;
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
   }
 
   async findQuotesByWord(word: string): Promise<Quote[]> {
-    const quotes = await this.QuoteModel.find({ quote: { $regex: word } });
-    return quotes;
+    try {
+      const quotes = await this.QuoteModel.find({ quote: { $regex: new RegExp(`${word}`), $options: "i" } });
+      return quotes;
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
   }
 }
 
