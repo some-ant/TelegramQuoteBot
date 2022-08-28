@@ -223,6 +223,26 @@ const urls = [
   "https://citaty.info/topic/vremya?page=28",
   "https://citaty.info/topic/vremya?page=29",
   "https://citaty.info/topic/vremya?page=30",
+
+  "https://citaty.info/search/site/%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D1%82%D1%8C?page=0",
+  "https://citaty.info/search/site/%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D1%82%D1%8C?page=1",
+  "https://citaty.info/search/site/%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D1%82%D1%8C?page=2",
+  "https://citaty.info/search/site/%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D1%82%D1%8C?page=3",
+  "https://citaty.info/search/site/%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D1%82%D1%8C?page=4",
+  "https://citaty.info/search/site/%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D1%82%D1%8C?page=5",
+  "https://citaty.info/search/site/%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D1%82%D1%8C?page=6",
+  "https://citaty.info/search/site/%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D1%82%D1%8C?page=7",
+  "https://citaty.info/search/site/%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D1%82%D1%8C?page=8",
+  "https://citaty.info/search/site/%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D1%82%D1%8C?page=9",
+
+  "https://citaty.info/search/site/%D1%81%D0%BC%D0%B5%D0%BB%D0%BE%D1%81%D1%82%D1%8C?page=0",
+  "https://citaty.info/search/site/%D1%81%D0%BC%D0%B5%D0%BB%D0%BE%D1%81%D1%82%D1%8C?page=1",
+  "https://citaty.info/search/site/%D1%81%D0%BC%D0%B5%D0%BB%D0%BE%D1%81%D1%82%D1%8C?page=2",
+  "https://citaty.info/search/site/%D1%81%D0%BC%D0%B5%D0%BB%D0%BE%D1%81%D1%82%D1%8C?page=3",
+  "https://citaty.info/search/site/%D1%81%D0%BC%D0%B5%D0%BB%D0%BE%D1%81%D1%82%D1%8C?page=4",
+  "https://citaty.info/search/site/%D1%81%D0%BC%D0%B5%D0%BB%D0%BE%D1%81%D1%82%D1%8C?page=5",
+  "https://citaty.info/search/site/%D1%81%D0%BC%D0%B5%D0%BB%D0%BE%D1%81%D1%82%D1%8C?page=6",
+  "https://citaty.info/search/site/%D1%81%D0%BC%D0%B5%D0%BB%D0%BE%D1%81%D1%82%D1%8C?page=7",
 ];
 
 export default urls;
