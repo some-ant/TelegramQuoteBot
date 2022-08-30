@@ -14,14 +14,49 @@ if (!token) {
 const bot = new TelegramBot(token, { polling: true });
 
 bot.onText(/\/byword (.+)/, async (msg, match) => {
-  const chatId = msg.chat.id;
-  let quote;
-  if (match) {
-    quote = await quoteStorage.findRandomQuoteByWord(match[1]);
-    quote = quote?.quote || "Цитата не найдена :(";
-  } else {
-    quote = "Введите поисковой запрос";
-  }
+  let quote = await quoteStorage.findRandomQuoteByWord(match?.[1] || "").then((res) => res?.quote);
+  let resp = quote || "Цитата не найдена :(";
+  bot.sendMessage(msg.chat.id, resp);
+});
 
-  bot.sendMessage(chatId, quote);
+bot.onText(/\/love/, async (msg) => {
+  let quote = await quoteStorage.findRandomQuoteByTags(["любовь"]).then((res) => res?.quote);
+  let resp = quote || "Цитата не найдена :(";
+  bot.sendMessage(msg.chat.id, resp);
+});
+
+bot.onText(/\/friendship/, async (msg) => {
+  let quote = await quoteStorage.findRandomQuoteByWord("друж").then((res) => res?.quote);
+  let resp = quote || "Цитата не найдена :(";
+  bot.sendMessage(msg.chat.id, resp);
+});
+
+bot.onText(/\/meaningful/, async (msg) => {
+  let quote = await quoteStorage.findRandomQuoteByWord("жизнь").then((res) => res?.quote);
+  let resp = quote || "Цитата не найдена :(";
+  bot.sendMessage(msg.chat.id, resp);
+});
+
+bot.onText(/\/man/, async (msg) => {
+  let quote = await quoteStorage.findRandomQuoteByTags(["мужчины"]).then((res) => res?.quote);
+  let resp = quote || "Цитата не найдена :(";
+  bot.sendMessage(msg.chat.id, resp);
+});
+
+bot.onText(/\/woman/, async (msg) => {
+  let quote = await quoteStorage.findRandomQuoteByTags(["женщины"]).then((res) => res?.quote);
+  let resp = quote || "Цитата не найдена :(";
+  bot.sendMessage(msg.chat.id, resp);
+});
+
+bot.onText(/\/lie/, async (msg) => {
+  let quote = await quoteStorage.findRandomQuoteByTags(["ложь"]).then((res) => res?.quote);
+  let resp = quote || "Цитата не найдена :(";
+  bot.sendMessage(msg.chat.id, resp);
+});
+
+bot.onText(/\/fear/, async (msg) => {
+  let quote = await quoteStorage.findRandomQuoteByWord("страх").then((res) => res?.quote);
+  let resp = quote || "Цитата не найдена :(";
+  bot.sendMessage(msg.chat.id, resp);
 });
