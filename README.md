@@ -18,7 +18,7 @@ You can also add this bot to a public chat.
 `TELEGRAM_QUOTE_BOT_APP_PASSWORD=...`<br/>
 `TELEGRAM_QUOTE_BOT_APP_DB=...`<br/>
 5. Run `npm run scrape` to scrape and save the qoutes
-6. Run `npm run bot` to start listening on messages to your bot with `TELEGRAM_QUOTE_BOT_APP_TOKEN`
+6. Run `npm run bot` to start listening on messages to your bot with `TELEGRAM_QUOTE_BOT_APP_TOKEN`. Alternatively, you can create a Docker image and run container on your PC or services like AWS ECS 
 
 ---
 ## Commands for bot in Telegram
