@@ -5,13 +5,15 @@ services:
         build: .
         environment:
             - TELEGRAM_QUOTE_BOT_APP_TOKEN=${TELEGRAM_QUOTE_BOT_APP_TOKEN}
-            - MONGO_HOST=${MONGO_HOST}
-            - MONGO_PORT=${MONGO_PORT}
+            - MONGO_HOST=mongodb
+            - MONGO_PORT=27017
             - TELEGRAM_QUOTE_BOT_APP_USERNAME=${TELEGRAM_QUOTE_BOT_APP_USERNAME}
             - TELEGRAM_QUOTE_BOT_APP_PASSWORD=${TELEGRAM_QUOTE_BOT_APP_PASSWORD}
             - TELEGRAM_QUOTE_BOT_APP_DB=${TELEGRAM_QUOTE_BOT_APP_DB}
         depends_on:
             - mongodb
+        networks:
+            - mongo-network
 
     mongodb:
         image: mongo:latest
