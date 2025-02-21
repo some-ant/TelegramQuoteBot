@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+    app:
+        build: .
+        environment:
+            - TELEGRAM_QUOTE_BOT_APP_TOKEN=${TELEGRAM_QUOTE_BOT_APP_TOKEN}
+            - MONGO_HOST=${MONGO_HOST}
+            - MONGO_PORT=${MONGO_PORT}
+            - TELEGRAM_QUOTE_BOT_APP_USERNAME=${TELEGRAM_QUOTE_BOT_APP_USERNAME}
+            - TELEGRAM_QUOTE_BOT_APP_PASSWORD=${TELEGRAM_QUOTE_BOT_APP_PASSWORD}
+            - TELEGRAM_QUOTE_BOT_APP_DB=${TELEGRAM_QUOTE_BOT_APP_DB}
+        depends_on:
+            - mongodb
+
+    mongodb:
+        image: mongo:latest
+        ports:
+            - '27017:27017'
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=${TELEGRAM_QUOTE_BOT_APP_USERNAME}
+            - MONGO_INITDB_ROOT_PASSWORD=${TELEGRAM_QUOTE_BOT_APP_PASSWORD}
+            - MONGO_INITDB_DATABASE=${TELEGRAM_QUOTE_BOT_APP_DB}
+        volumes:
+            - ./scripts/init.js:/docker-entrypoint-initdb.d/init.js:ro
+        networks:
+            - mongo-network
+
+    mongo-express:
+        image: mongo-express:latest
+        ports:
+            - '8081:8081'
+        environment:
+            - ME_CONFIG_MONGODB_SERVER=mongodb
+            - ME_CONFIG_MONGODB_PORT=27017
+            - ME_CONFIG_MONGODB_ADMINUSERNAME=${TELEGRAM_QUOTE_BOT_APP_USERNAME}
+            - ME_CONFIG_MONGODB_ADMINPASSWORD=${TELEGRAM_QUOTE_BOT_APP_PASSWORD}
+        networks:
+            - mongo-network
+        depends_on:
+            - mongodb
+
+networks:
+    mongo-network:
+        driver: bridge
