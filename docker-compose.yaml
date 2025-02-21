@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
     app:
         build: .
@@ -24,7 +22,7 @@ services:
             - MONGO_INITDB_ROOT_PASSWORD=${TELEGRAM_QUOTE_BOT_APP_PASSWORD}
             - MONGO_INITDB_DATABASE=${TELEGRAM_QUOTE_BOT_APP_DB}
         volumes:
-            - ./scripts/init.js:/docker-entrypoint-initdb.d/init.js:ro
+            - mongo-data:/data/db
         networks:
             - mongo-network
 
@@ -41,6 +39,9 @@ services:
             - mongo-network
         depends_on:
             - mongodb
+
+volumes:
+    mongo-data:
 
 networks:
     mongo-network:
